@@ -68,3 +68,9 @@ which can then be used to interact with decentralized applications
    * you can see your metamask will open and you have to pay some fees and there we go nft minted successfully.
    * Now you can transfer it or mint it to another address.
    * And do this same process for more NFTs As much as you can.
+
+
+### 3. Deploy in Marketplace(Using ThirdWeb)
+1. Go to marketplace and click on the deploy and then click on the marketplace and press thirdweb/deploy. [learn More about this](https://portal.thirdweb.com/pre-built-contracts/marketplace)
+2. Give a image and description , choose network(testnet) and then deploy.
+3. Done ! Now you can see your marketplace in the marketplace section. Successfully deployed the contract.
