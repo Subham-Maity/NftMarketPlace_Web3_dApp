@@ -110,3 +110,44 @@ import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
     <Component {...pageProps} />
 </ThirdwebProvider>
 ```
+
+### 5. Connect Metamask Function Create and Check
+
+1.useAdress() - this hook will return the address of the connected wallet.
+2.useThirdweb() - this hook will return the thirdweb object.
+
+```note: These are two hooks that third web provided for us to make user authetication a lot simpler.```
+
+```jsx
+import { useAddress, useMetamask } from '@thirdweb-dev/react'
+```
+
+3. Connect Metamask - this function will connect the metamask wallet.(index.js)
+```jsx
+import { useAddress, useMetamask } from '@thirdweb-dev/react'
+
+const style = {
+}
+export default function Home() {
+    const connectWithMetamask = useMetamask()
+    const address = useAddress()
+    console.log(address)
+    return (
+        <div className={style.wrapper}>
+            <button onClick={connectWithMetamask} > Connect Metamask</button>
+        </div>
+    )
+}
+```
+
+* How do we know it's connected ?
+  before connect your metamask wallet open your browser and open console , you can see it'll show you undefined.
+* when you click on the connect metamask button it'll show you your address in the console like this 
+
+<p align="center">
+        <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/Screenshot 2022-08-27 162445.png?raw=true"/>
+        </p>
+
+
+  * ```note: if you don't see your address then you have to refresh the page.```
+  
