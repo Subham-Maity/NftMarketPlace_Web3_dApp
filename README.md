@@ -94,8 +94,11 @@ import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
 3. We need to create a component (check commit and you can find all changes in ```(pages/app.js)``` ) but we need to give a chain Id with you have to specify the network(renkeby in my case) .
  <h3><u> infura.io </u> </h3> 
 4. In order to get connected to the network we're gonna be needing to set up some sort of rpc node and to do that yourself would take a lot of work on infrastructure in creating it. Luckily there is a service that isn't going to allow us to connect directly to the network to do that we're gonna be using something called infuria.
+
  * so go to the link and create account and set up your project.[Click Here](https://infura.io/dashboard)
+
  * make your own API key and copy it. Don't copy my KEY. 😡
+
 ```jsx
 //inside Return/ _app.js
 <ThirdwebProvider
