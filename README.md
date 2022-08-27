@@ -74,3 +74,13 @@ which can then be used to interact with decentralized applications
 1. Go to marketplace and click on the deploy and then click on the marketplace and press thirdweb/deploy. [learn More about this](https://portal.thirdweb.com/pre-built-contracts/marketplace)
 2. Give a image and description , choose network(testnet) and then deploy.
 3. Done ! Now you can see your marketplace in the marketplace section. Successfully deployed the contract.
+
+### 4. Showcases List in Our Marketplace(Using ThirdWeb)
+1. We want to showcase our NFTs in our marketplace so we have to add our NFTs in the showcase list.
+2. Now you can see ```New Listing``` in the marketplace section. click on that . [Link](https://thirdweb.com/rinkeby/marketplace/)
+3. Click on Direct Listing Type 
+4. Listing Currency - ETH
+5. Listing Price - 0.01 ETH/0.02/ anythings
+6. Quantity - 1
+7. Create Listing
+8. do this for all NFTs and you can see your NFTs in the marketplace section.
