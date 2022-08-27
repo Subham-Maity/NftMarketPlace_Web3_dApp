@@ -84,3 +84,26 @@ which can then be used to interact with decentralized applications
 6. Quantity - 1
 7. Create Listing
 8. do this for all NFTs and you can see your NFTs in the marketplace section.
+
+### 5. Create a component for connect our API
+1. We need to wrap our app with this ThirdWeb provider so we need to import the ThirdWebprovider.
+2. ChaindId - the address of the contract that we want to use.(Here we use our rainkeby testnetwork) 
+```jsx
+import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
+```
+3. We need to create a component (check commit and you can find all changes in ```(pages/app.js)``` ) but we need to give a chain Id with you have to specify the network(renkeby in my case) .
+ <h3><u> infura.io </u> </h3> 
+4. In order to get connected to the network we're gonna be needing to set up some sort of rpc node and to do that yourself would take a lot of work on infrastructure in creating it. Luckily there is a service that isn't going to allow us to connect directly to the network to do that we're gonna be using something called infuria.
+ * so go to the link and create account and set up your project.[Click Here](https://infura.io/dashboard)
+ * make your own API key and copy it. Don't copy my KEY. 😡
+```jsx
+//inside Return/ _app.js
+<ThirdwebProvider
+    desiredChainId = {ChainId. Rinkeby}
+    chainRpc={{
+        [ChainId. Rinkeby]: `YOUR API KEY 😡`
+    }}
+>
+    <Component {...pageProps} />
+</ThirdwebProvider>
+```
