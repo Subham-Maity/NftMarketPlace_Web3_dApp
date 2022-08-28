@@ -150,4 +150,41 @@ export default function Home() {
 
 
   * ```note: if you don't see your address then you have to refresh the page.```
-  
+
+### 6. Ternary Statement Use
+
+```Note``` **Class vs function component**
+
+A functional component is just a plain JavaScript pure function that accepts props as an argument and returns a React element(JSX). A class component requires you to extend from React. Component and create a render function which returns a React element. There is no render method used in functional components.
+
+1. This is functional component so within this same function we can have another function ```const Auth``` and this will return connect metamask button 
+2. Create a fragment a place here input Hello you can see hello in you website.
+```jsx
+//index.js
+export default function Home() {
+    const connectWithMetamask = useMetamask()
+    const address = useAddress()
+    console.log(address)
+    const Auth = () => {
+        return (
+            <div className={style.wrapper}>
+                <button onClick={connectWithMetamask}> Connect Metamask</button>
+            </div>
+        )
+    }
+    return <>Hello</>
+}
+```
+
+3. You can see even though I have auth here we're not seeing to connect metamask one that's because I'm not calling the function anywhere.
+4. ```Ternary Statement```  - > if address is true then show auth else show hello/Logged In.
+```jsx
+    return <>{address ? <div>LOGGED IN</div> : Auth()}</>
+```
+* ```const address = useAddress()``` .... be undefined till I logged  in or in other words If I say address here I'm basically using the address as a condition if ```address``` exist then question mark I want to load a div here that says we are logged in if address doesn't exist and it's undefined then we should load the ```Auth```. And what is auth - Auth is a function that returns a button that says connect metamask.
+
+*  Now you can see when I connect my metamask wallet It'll show you ```LOGGED IN``` in the website. Like This.
+ <p align="center">
+        <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/gif1.gif?raw=true"/>
+        </p>
+
