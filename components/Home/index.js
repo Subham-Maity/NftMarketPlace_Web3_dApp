@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useAddress } from '@thirdweb-dev/react'
 import { MdVerified } from 'react-icons/md'
-import TopNavbarLayout from '../../layouts/TopNavbarLayout'
+// import TopNavbarLayout from '../../layouts/TopNavbarLayout'
 import CollectionStats from './CollectionStats'
 import { collectionData } from '../../static/collections'
 // import Listings from './Listings'
@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <div>
-      <TopNavbarLayout>
+      {/*<TopNavbarLayout>*/}
         <div className={style.wrapper}>
           <div className={style.container}>
             <div className={style.bannerContainer}>
@@ -96,7 +96,7 @@ export default function Home() {
 
           {/* <Listings /> */}
         </div>
-      </TopNavbarLayout>
+      {/*</TopNavbarLayout>*/}
     </div>
   )
 }

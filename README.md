@@ -23,6 +23,16 @@
 
 ```Note: Always check commits with description```
 
+* [1.Third web dashboard and connect to the metamask wallet.](#1-open-the-link-and-click-herehttpsthirdwebcomcontracts-to-see-the-third-web-dashboard-and-connect-to-the-metamask-wallet)
+* [2.NFT mint (Using ThirdWeb)](#2-nft-mint-using-thirdweb)
+* [3.Deploy in Marketplace(Using ThirdWeb)](#3-deploy-in-marketplaceusing-thirdweb)
+* [4.Showcases List in Our Marketplace(Using ThirdWeb)](#4-showcases-list-in-our-marketplaceusing-thirdweb)
+* [5.Create a component for connect our API](#5-create-a-component-for-connect-our-api)
+* [6.Connect Metamask Function Create and Check](#6-connect-metamask-function-create-and-check)
+* [7.Ternary Statement Use](#7-ternary-statement-use)
+* [8.Style our object](#8-style-our-object)
+* [9.Home Page Setup](#9-home-page-setup)
+
 
 ### 1. Open the link and [click here](https://thirdweb.com/contracts) to see the third web dashboard and connect to the metamask wallet.
 **what is third web ?**
@@ -111,7 +121,7 @@ import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
 </ThirdwebProvider>
 ```
 
-### 5. Connect Metamask Function Create and Check
+### 6. Connect Metamask Function Create and Check
 
 1.useAdress() - this hook will return the address of the connected wallet.
 2.useThirdweb() - this hook will return the thirdweb object.
@@ -151,7 +161,7 @@ export default function Home() {
 
   * ```note: if you don't see your address then you have to refresh the page.```
 
-### 6. Ternary Statement Use
+### 7. Ternary Statement Use
 
 ```Note``` **Class vs function component**
 
@@ -188,7 +198,7 @@ export default function Home() {
         <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/gif1.gif?raw=true"/>
         </p>
 
-### 7. Style our object 
+### 8. Style our object 
 ```jsx
 const style = {
     wrapper: `flex h-screen items-center justify-center`,
@@ -214,3 +224,149 @@ const style = {
  <p align="center">
         <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/gif2.gif?raw=true"/>
         </p>
+
+
+### 9. Home Page Setup
+1. If you open home folder you can see there is a ```index.js``` file and this is our home page and CollectionStats.js file and this is our collection stats component.
+2. You can see some css work is done in ```index.js``` file and ```CollectionStats.js``` file no need to worry about just read comment lines we mention all of these .
+```jsx
+//home/index.js
+import { useState, useEffect } from 'react' //useState -> to store the data and useEffect -> to fetch the data
+import Image from 'next/image' //next/image -> to load the image
+import { useRouter } from 'next/router' //next/router -> to navigate to different page
+import { useAddress } from '@thirdweb-dev/react'//useAddress -> to get the address of the connected wallet
+import { MdVerified } from 'react-icons/md'//react-icons -> to get the icon
+import TopNavbarLayout from '../../layouts/TopNavbarLayout'//TopNavbarLayout -> to get the navbar
+import CollectionStats from './CollectionStats'//CollectionStats -> to get the collection stats
+import { collectionData } from '../../static/collections'//collectionData -> to get the collection data
+// import Listings from './Listings'//Listings -> to get the listings
+
+const style = {//css work  -> to style our object
+    wrapper: `flex flex-col dark:bg-[#202226] relative flex flex-col`,//flex -> to make it flexbox and flex-col -> to make it column and dark:bg-[#202226] -> to make it dark mode 
+    container: `relative flex h-[650px] flex-col`,//container -> to make it container relative -> to make it relative and h-[650px] -> to make it height 650px and flex-col -> to make it column 
+    bannerContainer: `absolute h-1/3 w-full`,//bannerContainer -> to make it banner container and h-1/3 -> to make it height 1/3 and w-full -> to make it width full
+    banner: `rounded-t-lg object-cover`,//banner -> to make it banner and rounded-t-lg -> to make it rounded and object-cover -> to make it cover
+    collectionInfoWrapper: `absolute inset-0 top-1/3 z-10 h-2/3 -translate-y-16`,//collectionInfoWrapper -> to make it collection info wrapper and inset-0 -> to make it inset 0 and top-1/3 -> to make it top 1/3 and z-10 -> to make it z-index 10 and h-2/3 -> to make it height 2/3 and -translate-y-16 -> translate y we use this to move the element up and down
+    collectionInfoContainer: `flex flex-col items-center space-y-4`,//collectionInfoContainer -> to make it collection info container and flex-col -> to make it column and items-center -> to make it center and space-y-4 -> to make it space y 4
+    collectionLogoContainer: `flex items-center justify-center rounded-full border-4 border-gray-100`,//collectionLogoContainer -> to make it collection logo container and flex -> to make it flexbox and items-center -> to make it center and justify-center -> to make it center and rounded-full -> to make it rounded and border-4 -> to make it border 4 and border-gray-100 -> to make it border gray 100
+    collectionLogo: `rounded-full object-cover`,//collectionLogo -> to make it collection logo and rounded-full -> to make it rounded and object-cover -> to make it cover
+    collectionInfo: `flex flex-col items-center space-y-6`,//collectionInfo -> to make it collection info and flex-col -> to make it column and items-center -> to make it center and space-y-6 -> to make it space y 6
+    creatorInfoContainer: `flex items-center space-x-1`,//creatorInfoContainer -> to make it creator info container and flex -> to make it flexbox and items-center -> to make it center and space-x-1 -> to make it space x 1
+    creator: `text-sm font-medium text-gray-500`,//creator -> to make it creator and text-sm -> to make it text small and font-medium -> to make it font medium and text-gray-500 -> to make it text gray 500
+    creatorName: `cursor-pointer text-blue-500`,//creatorName -> to make it creator name and cursor-pointer -> to make it cursor pointer and text-blue-500 -> to make it text blue 500
+    verified: `h-5 w-5 text-blue-500`,//verified -> to make it verified and h-5 -> to make it height 5 and w-5 -> to make it width 5 and text-blue-500 -> to make it text blue 500
+    descriptionContainer: `max-w-3xl py-2 px-10 text-center text-gray-500`,//descriptionContainer -> to make it description container and max-w-3xl -> to make it max width 3xl and py-2 -> to make it padding y 2 and px-10 -> to make it padding x 10 and text-center -> to make it center and text-gray-500 -> to make it text gray 500
+}
+
+export default function Home() {//export default function Home() -> to export our function
+    const address = useAddress()//address -> to get the address of the connected wallet
+    const [collection] = useState(collectionData)//collection -> to store the collection data and useState -> to store the data
+    const router = useRouter()//router -> to navigate to different page
+    const { slug } = router.query//slug -> to get the slug
+
+    useEffect(() => {//useEffect -> to fetch the data
+        if (!address) router.replace('/')//if address is not there then navigate to home page
+    }, [address])//if address is change then run this useEffect
+
+    useEffect(() => {//useEffect -> to fetch the data
+        if (!slug) return//if slug is not there then return
+            ;(async () => {
+            const collectionData = await getCollection()//collectionData -> to store the collection data and getCollection -> to get the collection data
+
+            setCollection(collectionData)//setCollection -> to set the collection data
+        })()//async function
+    }, [slug])//if slug is change then run this useEffect
+
+    return (//return -> to return the data
+        <div> 
+            <TopNavbarLayout> 
+                <div className={style.wrapper}>
+                    <div className={style.container}>
+                        <div className={style.bannerContainer}>
+                            <Image
+                                className={style.banner}
+                                src={collection?.banner_image_url}
+                                layout='fill'
+                                alt='banner'
+                            />
+                        </div>
+
+                        <div className={style.collectionInfoWrapper}>
+                            <div className={style.collectionInfoContainer}>
+                                <div className={style.collectionLogoContainer}>
+                                    <Image
+                                        className={style.collectionLogo}
+                                        src={collection?.image_url}
+                                        height={128}
+                                        width={128}
+                                        alt='logo'
+                                    />
+                                </div>
+
+                                <div className={style.collectionInfo}>
+                                    <div className={style.title}>{collection?.name}</div>
+
+                                    <div className={style.creatorInfoContainer}>
+                                        <div className={style.creator}>
+                                            Created by{' '}
+                                            <span className={style.creatorName}>
+                        {collection?.creator}
+                      </span>
+                                        </div>
+                                        <MdVerified className={style.verified} />
+                                    </div>
+                                </div>
+
+                                <CollectionStats stats={collection?.stats} />
+
+                                <div className={style.descriptionContainer}>
+                                    {collection?.description}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* <Listings /> */}
+                </div>
+            </TopNavbarLayout>
+        </div>
+    )
+}
+
+```
+
+3. Now go to pages and import hope in index.js file
+
+```jsx
+import Main from '../components/Home'
+```
+4. And if there is an account connected load that very same main component so change it account to main
+
+```jsx
+return <>{address ? <Main /> : Auth()}</>
+```
+5. Now you can see some error like this in your page so just do this
+```text
+Module not found: Can't resolve '../../layouts/TopNavbarLayout'
+4 | import { useAddress } from '@thirdweb-dev/react'
+5 | import { MdVerified } from 'react-icons/md'
+> 6 | import TopNavbarLayout from '../../layouts/TopNavbarLayout'
+7 | import CollectionStats from './CollectionStats'
+8 | import { collectionData } from '../../static/collections'
+9 | // import Listings from './Listings'
+```
+* inside home folder go to index.js and comment out the ```import TopNavbarLayout from '../../layouts/TopNavbarLayout'``` 
+* and now comment out TopNavbarLayout tag ```{/*<TopNavbarLayout>*/}``` like this you can check my commit also.(11 no commit)
+6. Now connect metaMask you can see the design of the home page like this
+
+ <p align="center">
+        <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/gif3.gif?raw=true"/>
+        </p>
+
+7. You're probably like whoa where did all this come from ? Basically this is part of that home index and all of that is set up it's getting static information so don't worry this isn't coming from third web It's just a placeholder.
+8. I add some images like eth-logo , hero-banner.jpeg .....and so on in the public folder [Here](https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/tree/main/public)
+
+
+
+
+
