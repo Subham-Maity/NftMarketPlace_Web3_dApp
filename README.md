@@ -188,3 +188,29 @@ export default function Home() {
         <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/gif1.gif?raw=true"/>
         </p>
 
+### 7. Style our object 
+```jsx
+const style = {
+    wrapper: `flex h-screen items-center justify-center`,
+    connectWalletButton: `rounded-lg border border-black px-10 py-5 transition-all hover:bg-black hover:text-white `,
+}
+```
+1. ```wrapper: `flex h-screen items-center justify-center`,``` - > this is flexbox and this is going to center our content vertically and horizontally.
+
+2. ```connectWalletButton: `rounded-lg border border-black px-10 py-5 transition-all hover:bg-black hover:text-white `,``` - > this is a button style (for now do that I'll change it later when I add dark mode)
+
+
+3. Add Button style in our button.
+```jsx
+                <button
+                    onClick={connectWithMetamask}
+                    className={style.connectWalletButton}
+                >
+                    Connect Metamask
+                </button>
+```
+```className={style.connectWalletButton}``` - > this is a button style and you have to add this in your button.
+
+ <p align="center">
+        <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/gif2.gif?raw=true"/>
+        </p>
