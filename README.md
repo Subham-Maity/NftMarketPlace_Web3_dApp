@@ -23,15 +23,15 @@
 
 ```Note: Always check commits with description```
 
-* [1.Third web dashboard and connect to the metamask wallet.](#1-open-the-link-and-click-herehttpsthirdwebcomcontracts-to-see-the-third-web-dashboard-and-connect-to-the-metamask-wallet)
-* [2.NFT mint (Using ThirdWeb)](#2-nft-mint-using-thirdweb)
-* [3.Deploy in Marketplace(Using ThirdWeb)](#3-deploy-in-marketplaceusing-thirdweb)
-* [4.Showcases List in Our Marketplace(Using ThirdWeb)](#4-showcases-list-in-our-marketplaceusing-thirdweb)
-* [5.Create a component for connect our API](#5-create-a-component-for-connect-our-api)
-* [6.Connect Metamask Function Create and Check](#6-connect-metamask-function-create-and-check)
-* [7.Ternary Statement Use](#7-ternary-statement-use)
-* [8.Style our object](#8-style-our-object)
-* [9.Home Page Setup](#9-home-page-setup)
+* [**1.Third web dashboard and connect to the metamask wallet.**](#1-open-the-link-and-click-herehttpsthirdwebcomcontracts-to-see-the-third-web-dashboard-and-connect-to-the-metamask-wallet)
+* [**2.NFT mint (Using ThirdWeb)**](#2-nft-mint-using-thirdweb)
+* [**3.Deploy in Marketplace(Using ThirdWeb)**](#3-deploy-in-marketplaceusing-thirdweb)
+* [**4.Showcases List in Our Marketplace(Using ThirdWeb)**](#4-showcases-list-in-our-marketplaceusing-thirdweb)
+* [**5.Create a component for connect our API**](#5-create-a-component-for-connect-our-api)
+* [**6.Connect Metamask Function Create and Check**](#6-connect-metamask-function-create-and-check)
+* [**7.Ternary Statement Use**](#7-ternary-statement-use)
+* [**8.Style our object**](#8-style-our-object)
+* [**9.Home Page Setup**](#9-home-page-setup)
 
 
 ### 1. Open the link and [click here](https://thirdweb.com/contracts) to see the third web dashboard and connect to the metamask wallet.
@@ -335,7 +335,7 @@ export default function Home() {//export default function Home() -> to export ou
 
 ```
 
-3. Now go to pages and import hope in index.js file
+3. Now go to pages and import home in index.js file
 
 ```jsx
 import Main from '../components/Home'
@@ -366,6 +366,18 @@ Module not found: Can't resolve '../../layouts/TopNavbarLayout'
 7. You're probably like whoa where did all this come from ? Basically this is part of that home index and all of that is set up it's getting static information so don't worry this isn't coming from third web It's just a placeholder.
 8. I add some images like eth-logo , hero-banner.jpeg .....and so on in the public folder [Here](https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/tree/main/public)
 
+### 10. Temporary Change The Footer Area and Change Some Color
+1. You can see a folder styles go to global.css and add this code (temporary change)
+```css
+background: black;
+```
+2. Now go to Home inside Home folder you can see index.js file and add this to the style you can check my commit(12)
+
+
+```jsx
+title: `text-4xl font-bold text-white`, 
+creator: `text-sm font-medium text-gray-500 text-white`,
+```
 
 
 
