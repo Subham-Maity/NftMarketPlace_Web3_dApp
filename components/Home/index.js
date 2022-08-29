@@ -6,7 +6,7 @@ import { MdVerified } from 'react-icons/md'
 // import TopNavbarLayout from '../../layouts/TopNavbarLayout'
 import CollectionStats from './CollectionStats'
 import { collectionData } from '../../static/collections'
-// import Listings from './Listings'
+import Listings from './Listings'
 
 const style = {
   wrapper: `flex flex-col dark:bg-[#202226] relative flex flex-col`,
@@ -94,7 +94,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* <Listings /> */}
+           <Listings />
         </div>
       {/*</TopNavbarLayout>*/}
     </div>

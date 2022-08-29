@@ -23,7 +23,7 @@
 
 ```Note: Always check commits with description```
 
-* [**1.Third web dashboard and connect to the metamask wallet.**](#1-open-the-link-and-click-herehttpsthirdwebcomcontracts-to-see-the-third-web-dashboard-and-connect-to-the-metamask-wallet)
+* [**1. Third web Login and Setup.**](#1-third-web-login-and-setup)
 * [**2.NFT mint (Using ThirdWeb)**](#2-nft-mint-using-thirdweb)
 * [**3.Deploy in Marketplace(Using ThirdWeb)**](#3-deploy-in-marketplaceusing-thirdweb)
 * [**4.Showcases List in Our Marketplace(Using ThirdWeb)**](#4-showcases-list-in-our-marketplaceusing-thirdweb)
@@ -32,9 +32,14 @@
 * [**7.Ternary Statement Use**](#7-ternary-statement-use)
 * [**8.Style our object**](#8-style-our-object)
 * [**9.Home Page Setup**](#9-home-page-setup)
+* [**10. Temporary Change The Footer Area and Change Some Color**](#10-temporary-change-the-footer-area-and-change-some-color)
+* [**11. Listing Page Setup**](#11-listing-page-setup)
+   * [11.1. getListings Setup and useEffect](#111-getlistings-setup-and-useeffect) 
 
 
-### 1. Open the link and [click here](https://thirdweb.com/contracts) to see the third web dashboard and connect to the metamask wallet.
+### 1. Third web Login and Setup
+Open the link and [click here](https://thirdweb.com/contracts) to see the third web dashboard and connect to the metamask wallet.
+
 **what is third web ?**
 ```text
 thirdweb is a platform that provides a suite of tools for creators, artists, and entrepreneurs to easily build,
@@ -378,7 +383,86 @@ background: black;
 title: `text-4xl font-bold text-white`, 
 creator: `text-sm font-medium text-gray-500 text-white`,
 ```
+### 11. Listing Page Setup
 
+#### 11.1 getListings Setup and useEffect
 
+```jsx
+1. Inside components Open ```Home``` folder and create ```Listings.js ``` you can check my commit(13)  and add this basic syntax
+```jsx
+const Listings = () => {
+  return (
+      <div>
+        LISTINGS
+      </div>
+  )
+}
+export default Listings;
+```
+2. Then go to index.js inside Home folder and add ```<Listings />``` tag (in my case i'm going to uncomment it) You can see Listing text top left corner of the footer part
 
+3. Now create some Hook and use it in the Listings.js file you can check my commit(13)
+```jsx
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { useMarketplace } from '@thirdweb-dev/react'
+```
+* import { useState, useEffect } from 'react'- useState -> to store the data and useEffect -> to fetch the data
+* import Link from 'next/link' - Link -> to navigate to different page 
+* import { useMarketplace } from '@thirdweb-dev/react' - useMarketplace -> to get the marketplace data from third web 
+    * basically It's gonna allow us to get the marketplace we created and add it to our app and then we can use it to get the data from the marketplace.
 
+4. Now in index.js file add this code If you add this and open your console in the browser you can see undefined because use marketplace is a hook that's gonna take in a contract address 
+```jsx
+    const marketplace = useMarketplace()
+        console.log(marketplace)
+```
+5. So open your thirdweb marketplace website and copy the address [Click Here](https://thirdweb.com/rinkeby/marketplace)
+
+ <p align="center">
+        <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/Screenshot 2022-08-29 215358.png?raw=true"/>
+        </p>
+
+```note: don't copy my address ```
+
+6. Now open your console you can see something like this now you can remove the  ```console.log(marketplace)```
+```jsx
+    const marketplace = useMarketplace("your address")
+        console.log(marketplace)
+```
+<p align="center">
+        <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/Screenshot 2022-08-29 220127.png?raw=true"/>
+        </p>
+
+7.We are gonna make getListing function and that's gonna grab the marketplace data and get the active listing (our cryptopunks NFTs) and store it in state
+```jsx
+    const getListings = async () => {
+        try {
+            const list = await marketplace.getActiveListings()
+            console.log(list)
+             
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+```
+```try catch``` - catch is going to take in an error and if there is an error we're going to console that log there and then for the try ```const list = weight``` which means we're going to wait for this function or method to finish before moving on to the next step ```marketplace.getActiveListings()``` it's gonna be a method within marketplace. 
+
+* **You know why we are gonna running the function?** 
+
+   * This is just me creating the instructions but I haven't told my computer when to run that's where the ```useEffect``` is going to come in handy if you don't know it's a react hook that lets you perform side effects or functions at any point during the component's life cycle basically when do you want to run a function if you want to run a function when the component loads you can use effect for that.
+
+8.   ```useEffect(() => {)``` as an argument it's going to take in two parameters so we're going to take in a anonymous function here that's the first one and this function is going to represent what do you want to do or again like what i said the side effect and for the side effect i'm going to call  ```getListings()``` if i'm calling getListings() i'm going to have a second parameter then  useEffect() which is this array ```[]``` this is called a dependency module basically it says when the page first loads run this and don't run it any other time.
+
+```jsx
+  useEffect(() => {
+    getListings()
+  }, [])
+```
+
+9. Let's see inspect element console logging list we got an array of eight now i can literally see each asset or each nft.If you can see all your NFTs that you minted.
+
+<p align="center">
+        <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/Screenshot 2022-08-29 232657.png?raw=true"/>
+        </p>
