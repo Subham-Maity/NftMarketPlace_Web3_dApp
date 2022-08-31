@@ -9,6 +9,33 @@
        <a href="https://www.youtube.com/channel/UCztgfCRJci6nx0VPVZcFstw/featured" target="_blank"><img alt="Youtube"
                 src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" /> </a> </div>
 
+***************************
+<h1 align="center"> Together, we'll build a Innovative and Advanced Blockchain(web3) based project, I'll teach you how 😊👇 </h1>
+
+<u> written by Subham 📜 </u> 
+
+```Note: Always check commits with description 💥```
+
+## Steps 👇
+
+
+
+* [**0. Tools Used 🔨**](#tools-used-)
+* [**1. Third web Login and Setup. 🕸️**](#1-third-web-login-and-setup)
+* [**2.NFT mint (Using ThirdWeb) 🙈**](#2-nft-mint-using-thirdweb)
+* [**3.Deploy in Marketplace(Using ThirdWeb) 🧑‍💻**](#3-deploy-in-marketplaceusing-thirdweb)
+* [**4.Showcases List in Our Marketplace(Using ThirdWeb) 🚿**](#4-showcases-list-in-our-marketplaceusing-thirdweb)
+* [**5.Create a component for connect our API ⚙️**](#5-create-a-component-for-connect-our-api)
+* [**6.Connect Metamask Function Create and Check 🔮**](#6-connect-metamask-function-create-and-check)
+* [**7.Ternary Statement Use ❓**](#7-ternary-statement-use)
+* [**8.Style our object 🌃**](#8-style-our-object)
+* [**9.Home Page Setup 🌈**](#9-home-page-setup)
+* [**10. Temporary Change The Footer Area and Change Some Color 🔼**](#10-temporary-change-the-footer-area-and-change-some-color)
+* [**11. Listing Page Setup 📃**](#11-listing-page-setup)
+     * [11.1. getListings Setup and useEffect](#111-getlistings-setup-and-useeffect-address-as-an-array-format)
+     * [11.2 Display Our NFTs(useState Setup & Style Object)](#112-display-our-nftsusestate-setup--style-object)
+
+******************
 ## Tools Used 🛠️
 
 - [**Next.js**](https://nextjs.org/) - Next.js is an open-source web development framework built on top of Node.js enabling React-based web applications
@@ -16,27 +43,8 @@
 - [**Webstorm**](https://www.jetbrains.com/webstorm/) - WebStorm is an integrated development environment for JavaScript and related technologies. Like other JetBrains IDEs
 - [**Infura**](https://infura.io/) - The world's most powerful suite of high availability blockchain APIs and developer tools
 - [**Tailwind CSS**](https://tailwindcss.com/) -A utility-first CSS framework for rapidly building custom user interfaces
-***************************
-<h2 align="center"> Discussing a few workflows with development 😊👇 </h2>
-
-<u> written by Subham </u> 
-
-```Note: Always check commits with description```
-
-* [**1. Third web Login and Setup.**](#1-third-web-login-and-setup)
-* [**2.NFT mint (Using ThirdWeb)**](#2-nft-mint-using-thirdweb)
-* [**3.Deploy in Marketplace(Using ThirdWeb)**](#3-deploy-in-marketplaceusing-thirdweb)
-* [**4.Showcases List in Our Marketplace(Using ThirdWeb)**](#4-showcases-list-in-our-marketplaceusing-thirdweb)
-* [**5.Create a component for connect our API**](#5-create-a-component-for-connect-our-api)
-* [**6.Connect Metamask Function Create and Check**](#6-connect-metamask-function-create-and-check)
-* [**7.Ternary Statement Use**](#7-ternary-statement-use)
-* [**8.Style our object**](#8-style-our-object)
-* [**9.Home Page Setup**](#9-home-page-setup)
-* [**10. Temporary Change The Footer Area and Change Some Color**](#10-temporary-change-the-footer-area-and-change-some-color)
-* [**11. Listing Page Setup**](#11-listing-page-setup)
-   * [11.1. getListings Setup and useEffect](#111-getlistings-setup-and-useeffect) 
-
-
+____________________________
+*******************
 ### 1. Third web Login and Setup
 Open the link and [click here](https://thirdweb.com/contracts) to see the third web dashboard and connect to the metamask wallet.
 
@@ -385,9 +393,9 @@ creator: `text-sm font-medium text-gray-500 text-white`,
 ```
 ### 11. Listing Page Setup
 
-#### 11.1 getListings Setup and useEffect
+#### 11.1 getListings Setup and useEffect (Address as an Array Format)
 
-```jsx
+
 1. Inside components Open ```Home``` folder and create ```Listings.js ``` you can check my commit(13)  and add this basic syntax
 ```jsx
 const Listings = () => {
@@ -427,7 +435,7 @@ import { useMarketplace } from '@thirdweb-dev/react'
 
 6. Now open your console you can see something like this now you can remove the  ```console.log(marketplace)```
 ```jsx
-    const marketplace = useMarketplace("your address")
+    const marketplace = useMarketplace("your address 🤙")
         console.log(marketplace)
 ```
 <p align="center">
@@ -466,3 +474,98 @@ import { useMarketplace } from '@thirdweb-dev/react'
 <p align="center">
         <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/Screenshot 2022-08-29 232657.png?raw=true"/>
         </p>
+
+#### 11.2 Display Our NFTs(useState Setup & Style Object)
+
+1. How do we bring it outside and into our app ?
+   
+That's where the other comes in ```useState``` so lets set up our UseSets
+
+const [] = useState([]) -> ```[]``` t's not a traditional like array that we're used to basically it's destructuring the array that comes from ```useState``` If you do console.log ```useState``` is going to show you an array undefined and a function. You can take those two things out by giving it a placeholder or name.
+
+so I'm going to call that first item in the array listing and the function i'm going to give the name i'm going to call it set listing.
+```jsx
+const [listings, setListings] = useState([])
+```
+2. const [listings, setListings] = useState([]) - >```listings``` is undefined if you do console.log(listings) It will show you undefined in the console of the browser.
+
+- Reasons undefined is because we didn't do something called initializing our state which is going to come here so if I say number ```4``` here look at that listings has the value of four I defined
+```jsx
+const [listings, setListings] = useState([4])
+console.log(listings)
+```
+3. but I want the ```useState``` to be an empty array reason being is because the type that I'm expecting this to actually be is an empty array and when we map through something it wouldn't cause any errors if the array is empty.
+So do this again
+```jsx
+const [listings, setListings] = useState([])
+```
+4. Listings is in an array now how do we set that listing we can do that by instead of console logging list here what if I use that function that I was talking about ```setListings``` so if you look it's no longer an empty array.
+
+```jsx
+    const getListings = async () => {
+        try {
+            const list = await marketplace.getActiveListings()
+            setListings(list)
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
+```
+5. Style - conditional rendering
+* Get started though is our style object we'll come to the top ```const style = {}``` const style is equal to object. Now first div is going to be ```style.wrapper```  like this  ```<div className={style.wrapper}>``` . 
+* What i want to do with this wrapper is something like we did before, and it's going to be called **conditional rendering** because depending on the condition i'm going to render different jsx so basically ```if the listings.length``` is ```greater than zero``` if I ask you when is the ```listings.length``` zero ? when you look at this array  ```[]``` int this const..-> ```const [listings, setListings] = useState([])```  when it first loads we had the empty array. So what's the length of that it's gonna be zero. 
+* When is the length greater than zero that's when ```useEffect``` runs our function and we load it with our seven(7 NFTs) listings 
+* So basically what I'm saying is once we have our listings loaded in what do we wanna do ? a question mark ```?```  then jsx so temporarily i'll put a fragment ```<>  </>``` here and i'll say ```put listings here```  just for now 
+* but once that's done I'll close off that parentheses and then I'll say if listings.length is zero then we can have this little loading ```<div>Loading...</div>``` screen 
+* So which one do you think is loaded put listings here or loading and if you said put listings here you'd be correct that's because the listing loaded.
+
+<p align="center">
+        <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/Screenshot 2022-08-31 152551.png?raw=true"/>
+        </p>
+
+```jsx
+    const style = {}
+```
+
+```jsx
+    return (
+        <div className={style.wrapper}>
+            {listings.length > 0 ? (
+                <>
+                    put listing here !
+                </>
+            ) : (
+                <div>Loading...</div>
+            )}
+        </div>
+    )
+}
+```
+
+6. What i want to do is obviously make this a lot nicer we don't want this text ``` put listing here !```  what i want to do is 
+* remove ``` put listing here !``` and replace ```listings?.map((listing, index) =>``` I want to make the return implied of an error function
+* ```listings?.map``` if you don't know what map is it's going to iterate through an array ,and you can give each item in that array a name so I could call it item but really each item is a listing this is just the variable name and what I'm saying here is for every listing I'm going to make Nft card Component.
+```jsx
+    return (
+        <div className={style.wrapper}>
+            {listings.length > 0 ? (
+                <>
+                {listings?.map((listing) => (
+                    <div>NFT CARD HERE</div>
+                ))}
+                </>
+            ) : (
+                <div>Loading...</div>
+            )}
+        </div>
+    )
+}
+```
+**It'll be like this**
+
+<p align="center">
+        <img src="https://github.com/Subham-Maity/NftMarketPlace_Web3_dApp/blob/main/ImagesForCollection/Screenshot 2022-08-31 191106.png?raw=true"/>
+        </p>
+
+you can see total eight NFTs Card here text because we have eight NFTs in our array and for every item in the array I'm making NFT card.
